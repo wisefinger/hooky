@@ -1,0 +1,4 @@
+# test locally
+sls invoke local -f hello
+
+# check offline mode?
