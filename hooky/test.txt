@@ -2,3 +2,8 @@
 sls invoke local -f hello
 
 # check offline mode?
+https://www.serverless.com/plugins/serverless-offline
+run sls offline
+
+pass query parameters to lambda
+https://stackoverflow.com/questions/31329958/how-to-pass-a-querystring-or-route-parameter-to-aws-lambda-from-amazon-api-gatew
