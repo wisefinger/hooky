@@ -7,3 +7,13 @@ run sls offline
 
 pass query parameters to lambda
 https://stackoverflow.com/questions/31329958/how-to-pass-a-querystring-or-route-parameter-to-aws-lambda-from-amazon-api-gatew
+
+add api key
+https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-use-postman-to-call-api.html
+
+You have to add the following header to your request
+--header 'x-api-key: xxxxxxxxxxxxx'
+
+sls deploy --stage dev
+
+

@@ -1,5 +1,5 @@
 import json
-
+import boto3
 
 def hello(event, context):
     if 'queryStringParameters' in event and 'uid' in event['queryStringParameters']:
