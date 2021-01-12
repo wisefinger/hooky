@@ -138,3 +138,41 @@ functions:
 #     NewOutput:
 #       Description: "Description for the output"
 #       Value: "Some output value"
+    Bucket:
+      Type: AWS::S3::Bucket
+      DeletionPolicy: Delete  # Delete or Retain
+      Properties:
+        BucketName: ${self:provider.stage}.media.porphyrio.net
+        CorsConfiguration:
+          CorsRules:
+            - AllowedOrigins:
+                - "*"
+              AllowedMethods:
+                - GET
+                - HEAD
+              AllowedHeaders:
+                - "*"
+        Tags:
+          - Key: PROJECT
+            Value: porphyrio/sls-api-poc
+    #          - Key: Domain
+    #            Value: ${self:custom.cdnDomainName}
+
+resources:
+  Resources:
+    Bucket:
+      Type: AWS::S3::Bucket
+      DeletionPolicy: Delete  # Delete or Retain
+      Properties:
+        BucketName: ${self:provider.stage}.hooky
+        CorsConfiguration:
+          CorsRules:
+            - AllowedOrigins:
+                - "*"
+              AllowedMethods:
+                - GET
+                - HEAD
+              AllowedHeaders:
+                - "*"
+
+
