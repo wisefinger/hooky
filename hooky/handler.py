@@ -5,6 +5,15 @@ def hello(event, context):
     if 'queryStringParameters' in event and 'uid' in event['queryStringParameters']:
         print("value found")
         uid = (event["queryStringParameters"]['uid'])
+        # Retrieve the list of existing buckets
+        s3 = boto3.client('s3')
+        response = s3.list_buckets()
+
+        # Output the bucket names
+        print('Existing buckets:')
+        for bucket in response['Buckets']:
+            print(f'  {bucket["Name"]}')
+
         body = {
             "message": "GGGGo Go Serverless v1.0! ",
             "uid": uid
