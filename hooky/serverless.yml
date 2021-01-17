@@ -37,7 +37,7 @@ provider:
     - Effect: 'Allow'
       Action:
         - 'sqs:*'
-      Resource: "arn:aws:sqs:us-east-1:939952545231:MyQueue"
+      Resource: "arn:aws:sqs:::*"
     - Effect: 'Allow'
       Action:
         - "s3:ListAllMyBuckets"
@@ -62,8 +62,23 @@ resources:
     MyQueue:
       Type: "AWS::SQS::Queue"
       Properties:
-        QueueName: "MyQueue"
-
+        QueueName: "MyQueue"git
+    AsyncResponseDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        TableName: 'hooky-${self:provider.stage}-table'
+        ProvisionedThroughput:
+          ReadCapacityUnits: "5"
+          WriteCapacityUnits: "5"
+        KeySchema:
+          - AttributeName: "Guid"
+            KeyType: "HASH"
+        AttributeDefinitions:
+          - AttributeName: "Guid"
+            AttributeType: "S"
+        TimeToLiveSpecification:
+          AttributeName: "TimeToLive"
+          Enabled: True
 
 
 
